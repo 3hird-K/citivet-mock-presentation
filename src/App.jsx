@@ -19,6 +19,50 @@ const LiveClock = () => {
     );
 };
 
+const SlideTimer = ({ duration }) => {
+    const [timeLeft, setTimeLeft] = useState(duration);
+
+    useEffect(() => {
+        setTimeLeft(duration);
+    }, [duration]);
+
+    useEffect(() => {
+        if (!duration) return;
+        const timer = setInterval(() => {
+            setTimeLeft(prev => prev - 1);
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [duration]);
+
+    if (!duration) return null;
+
+    const absTime = Math.abs(timeLeft);
+    const mins = Math.floor(absTime / 60);
+    const secs = absTime % 60;
+    const timeStr = `${timeLeft < 0 ? '-' : ''}${mins}:${secs.toString().padStart(2, '0')}`;
+
+    let colorClass = "text-primary border-primary/30";
+    let bgClass = "bg-primary/10";
+    
+    if (timeLeft <= 10 && timeLeft > 0) {
+        colorClass = "text-orange-500 border-orange-500/30";
+        bgClass = "bg-orange-500/10";
+    } else if (timeLeft <= 0) {
+        colorClass = "text-destructive border-destructive/30";
+        bgClass = "bg-destructive/10";
+    }
+
+    const progress = Math.min(Math.max((duration - timeLeft) / duration, 0), 1) * 100;
+
+    return (
+        <div className={`hidden md:flex flex-col items-end justify-center select-none px-4 py-2 rounded-md border ${colorClass} ${bgClass} shadow-sm transition-colors duration-500 min-w-[100px] relative overflow-hidden`} data-aos="fade-left" data-aos-delay="150" title={`Allocated time: ${Math.floor(duration/60)}:${(duration%60).toString().padStart(2, '0')}`}>
+             <div className="absolute bottom-0 left-0 h-1 bg-current opacity-20" style={{ width: `${progress}%`, transition: 'width 1s linear' }} />
+             <span className="text-[11px] font-black tracking-widest uppercase opacity-70 leading-none">Slide Time</span>
+             <span className="text-sm font-black tracking-wider leading-tight mt-1 tabular-nums">{timeStr}</span>
+        </div>
+    );
+};
+
 window.App = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showNotes, setShowNotes] = useState(false);
@@ -100,6 +144,7 @@ window.App = () => {
                             <div className="w-24 h-2 bg-primary rounded-full mt-4" />
                         </div>
                         <div className="flex items-stretch gap-4">
+                            <SlideTimer duration={slides[currentSlide].duration} key={`slide-timer-${slideKey}`} />
                             <LiveClock />
                             <div className="text-muted-foreground font-black tracking-widest text-xl hidden md:flex items-center justify-center select-none bg-card px-5 py-3 rounded-md border border-border shadow-sm" data-aos="fade-left">
                                 <div>

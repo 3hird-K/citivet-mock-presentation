@@ -48,6 +48,7 @@ const ZoomableImage = ({ src, alt, className }) => {
 window.slidesData = [
     {
         id: "title",
+        duration: 10,
         title: "SyncVet Overview",
         content: (
             <div className="flex flex-col items-center justify-center my-auto min-h-[400px] text-center max-w-4xl mx-auto py-8">
@@ -65,9 +66,9 @@ window.slidesData = [
                     Mobile and Web Platform for Animal Health Services - CDO
                 </p>
                 <div data-aos="fade-up" data-aos-delay="300" className="mt-8">
-                    <a 
-                        href="https://docs.google.com/document/d/1Ki2aQpa6QYzyRa_gN38tGrq83iWdNgAY/edit?usp=drive_link&ouid=100221485176403184332&rtpof=true&sd=true" 
-                        target="_blank" 
+                    <a
+                        href="https://docs.google.com/document/d/1Ki2aQpa6QYzyRa_gN38tGrq83iWdNgAY/edit?usp=drive_link&ouid=100221485176403184332&rtpof=true&sd=true"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 px-8 py-3.5 bg-card hover:bg-muted border border-border text-foreground rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group"
                     >
@@ -84,6 +85,7 @@ window.slidesData = [
     },
     {
         id: "background",
+        duration: 20,
         title: "Background of the Study",
         content: (
             <div className="flex flex-col gap-6 pt-4 max-w-6xl mx-auto w-full">
@@ -122,6 +124,7 @@ window.slidesData = [
     },
     {
         id: "problem",
+        duration: 120,
         title: "Statement of the Problem",
         content: (
             <div className="flex flex-col gap-6 pt-4 max-w-6xl mx-auto w-full">
@@ -134,10 +137,10 @@ window.slidesData = [
                         <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground leading-snug">The CVO lacks an integrated, real-time digital system, resulting in fragmented and paper-dependent workflows.</p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
                     {[
                         { icon: "Unplug", title: "Disconnected Systems", desc: "Field & walk-in records separated." },
-                        { icon: "BookOpen", title: "Paper Dependency", desc: "Logbooks cause huge processing delays." },
+                        // { icon: "BookOpen", title: "Paper Dependency", desc: "Logbooks cause huge processing delays." },
                         { icon: "PhoneOff", title: "No Mobile Tool", desc: "No offline app for field capture." },
                         { icon: "Repeat", title: "Repetitive Entry", desc: "Manual one-by-one pet registration." },
                         { icon: "Clock", title: "Delayed Integration", desc: "No real-time data slows decisions." }
@@ -157,6 +160,7 @@ window.slidesData = [
     },
     {
         id: "objectives",
+        duration: 120,
         title: "Objectives of the Study",
         content: (
             <div className="flex flex-col gap-8 pt-4 max-w-6xl mx-auto w-full">
@@ -184,6 +188,7 @@ window.slidesData = [
     },
     {
         id: "significance",
+        duration: 30,
         title: "Significance of the Study",
         content: (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 max-w-6xl mx-auto w-full">
@@ -208,6 +213,7 @@ window.slidesData = [
     },
     {
         id: "scope",
+        duration: 90,
         title: "Scope & Limitations",
         content: (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 items-stretch max-w-6xl mx-auto w-full">
@@ -221,6 +227,7 @@ window.slidesData = [
                     <ul className="space-y-6">
                         {[
                             "React Native mobile app & Web Admin portal",
+                            "Predictive analytics or genetic modeling",
                             "Supports dogs, cats, poultry, livestock",
                             "Covers urban & peri-urban barangays in CDO",
                             "Offline field capture & walk-in records",
@@ -243,7 +250,6 @@ window.slidesData = [
                     <ul className="space-y-6">
                         {[
                             "Geographically limited to Cagayan de Oro City",
-                            "No predictive analytics or genetic modeling",
                             "Phil-AHIS national integration not implemented",
                             "Assumes minimum digital literacy & device access",
                             "Does not measure long-term epidemiological impact"
@@ -259,33 +265,34 @@ window.slidesData = [
         ),
         notes: "Let me now clarify what the study covers and where its boundaries lie..."
     },
-    {
-        id: "features",
-        title: "Key Features of SyncVet",
-        content: (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-4 max-w-6xl mx-auto w-full">
-                {[
-                    { icon: "Smartphone", title: "React Native App", text: "Primary field tool for staff and owners." },
-                    { icon: "LayoutDashboard", title: "Web Portal", text: "Command center for CVO managers." },
-                    { icon: "RefreshCw", title: "Real-Time Sync", text: "Cloud-based instant data transfer." },
-                    { icon: "Layers", title: "Batch Pet Entry", text: "Register multiple pets in one session." },
-                    { icon: "QrCode", title: "Digital Passport", text: "QR lookup for vaccination history." },
-                    { icon: "WifiOff", title: "Offline-First", text: "Local storage queued for later sync." },
-                ].map((f, i) => (
-                    <div key={i} data-aos="zoom-in" data-aos-delay={`${i * 100}`} className={`bento-card p-8 md:p-10 rounded-lg group`}>
-                        <div className="bg-muted shadow-inner border border-border w-16 h-16 rounded-md flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:text-primary-foreground group-hover:bg-primary transition-all duration-300">
-                            <window.Icon name={f.icon} size={32} />
-                        </div>
-                        <h4 className="font-black text-card-foreground text-xl md:text-2xl mb-3 tracking-tight">{f.title}</h4>
-                        <p className="text-base text-muted-foreground leading-relaxed font-medium">{f.text}</p>
-                    </div>
-                ))}
-            </div>
-        ),
-        notes: "Now let me walk you through the key features..."
-    },
+    // {
+    //     id: "features",
+    //     title: "Key Features of SyncVet",
+    //     content: (
+    //         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-4 max-w-6xl mx-auto w-full">
+    //             {[
+    //                 { icon: "Smartphone", title: "React Native App", text: "Primary field tool for staff and owners." },
+    //                 { icon: "LayoutDashboard", title: "Web Portal", text: "Command center for CVO managers." },
+    //                 { icon: "RefreshCw", title: "Real-Time Sync", text: "Cloud-based instant data transfer." },
+    //                 { icon: "Layers", title: "Batch Pet Entry", text: "Register multiple pets in one session." },
+    //                 { icon: "QrCode", title: "Digital Passport", text: "QR lookup for vaccination history." },
+    //                 { icon: "WifiOff", title: "Offline-First", text: "Local storage queued for later sync." },
+    //             ].map((f, i) => (
+    //                 <div key={i} data-aos="zoom-in" data-aos-delay={`${i * 100}`} className={`bento-card p-8 md:p-10 rounded-lg group`}>
+    //                     <div className="bg-muted shadow-inner border border-border w-16 h-16 rounded-md flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:text-primary-foreground group-hover:bg-primary transition-all duration-300">
+    //                         <window.Icon name={f.icon} size={32} />
+    //                     </div>
+    //                     <h4 className="font-black text-card-foreground text-xl md:text-2xl mb-3 tracking-tight">{f.title}</h4>
+    //                     <p className="text-base text-muted-foreground leading-relaxed font-medium">{f.text}</p>
+    //                 </div>
+    //             ))}
+    //         </div>
+    //     ),
+    //     notes: "Now let me walk you through the key features..."
+    // },
     {
         id: "comparison",
+        duration: 60,
         title: "Related Systems Comparison",
         content: (
             <div data-aos="fade-up" className="overflow-x-auto rounded-lg border border-border bg-card shadow-2xl mb-4 mt-6 max-w-6xl mx-auto w-full">
@@ -333,49 +340,50 @@ window.slidesData = [
         ),
         notes: "SyncVet is the only system offering offline entry, batch entry, QR code, offline sync, and zero deployment cost..."
     },
-    {
-        id: "architecture",
-        title: "System Architecture",
-        content: (
-            <div className="flex flex-col items-center justify-start w-full pt-8 max-w-5xl mx-auto">
-                <div className="w-full relative flex flex-col pt-2">
-                    <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full point-events-none"></div>
+    // {
+    //     id: "architecture",
+    //     title: "System Architecture",
+    //     content: (
+    //         <div className="flex flex-col items-center justify-start w-full pt-8 max-w-5xl mx-auto">
+    //             <div className="w-full relative flex flex-col pt-2">
+    //                 <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full point-events-none"></div>
 
-                    <div data-aos="fade-down" className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8 relative z-10">
-                        <div className="bg-card p-5 rounded-lg border border-border text-center shadow-lg hover:-translate-y-1 transition-transform"><window.Icon name="Users" size={32} className="mx-auto text-primary mb-3" /> <span className="text-sm font-black tracking-widest uppercase text-muted-foreground">Field Staff</span></div>
-                        <div className="bg-card p-5 rounded-lg border border-border text-center shadow-lg hover:-translate-y-1 transition-transform"><window.Icon name="User" size={32} className="mx-auto text-primary mb-3" /> <span className="text-sm font-black tracking-widest uppercase text-muted-foreground">Pet Owners</span></div>
-                        <div className="bg-card p-5 rounded-lg border border-border text-center shadow-lg hover:-translate-y-1 transition-transform"><window.Icon name="Shield" size={32} className="mx-auto text-primary mb-3" /> <span className="text-sm font-black tracking-widest uppercase text-muted-foreground">CVO Admins</span></div>
-                    </div>
+    //                 <div data-aos="fade-down" className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8 relative z-10">
+    //                     <div className="bg-card p-5 rounded-lg border border-border text-center shadow-lg hover:-translate-y-1 transition-transform"><window.Icon name="Users" size={32} className="mx-auto text-primary mb-3" /> <span className="text-sm font-black tracking-widest uppercase text-muted-foreground">Field Staff</span></div>
+    //                     <div className="bg-card p-5 rounded-lg border border-border text-center shadow-lg hover:-translate-y-1 transition-transform"><window.Icon name="User" size={32} className="mx-auto text-primary mb-3" /> <span className="text-sm font-black tracking-widest uppercase text-muted-foreground">Pet Owners</span></div>
+    //                     <div className="bg-card p-5 rounded-lg border border-border text-center shadow-lg hover:-translate-y-1 transition-transform"><window.Icon name="Shield" size={32} className="mx-auto text-primary mb-3" /> <span className="text-sm font-black tracking-widest uppercase text-muted-foreground">CVO Admins</span></div>
+    //                 </div>
 
-                    <div data-aos="fade-up" data-aos-delay="100" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative z-10">
-                        <div className="bg-card border border-border p-8 rounded-lg text-center shadow-xl group hover:-translate-y-1 transition-transform backdrop-blur-md">
-                            <div className="bg-primary/10 w-20 h-20 mx-auto rounded-md flex items-center justify-center mb-5 border border-primary/20"><window.Icon name="Smartphone" size={40} className="text-primary" /></div>
-                            <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">React Native App</h4>
-                            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-muted-foreground mt-1">Offline-First Interface</p>
-                        </div>
-                        <div className="bg-card border border-border p-8 rounded-lg text-center shadow-xl group hover:-translate-y-1 transition-transform backdrop-blur-md">
-                            <div className="bg-primary/10 w-20 h-20 mx-auto rounded-md flex items-center justify-center mb-5 border border-primary/20"><window.Icon name="Monitor" size={40} className="text-primary" /></div>
-                            <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">Web Admin Portal</h4>
-                            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-muted-foreground mt-1">Command Dashboard</p>
-                        </div>
-                    </div>
-                    <div data-aos="fade-up" className="bg-primary border border-primary/40 p-8 rounded-lg text-center shadow-2xl mb-4 group hover:-translate-y-1 transition-transform backdrop-blur-md">
-                        <window.Icon name="Cloud" size={40} className="mx-auto text-primary-foreground mb-4 drop-shadow-md" />
-                        <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">Real-Time Sync Engine</h4>
-                        <p className="text-primary-foreground/80 text-sm font-bold tracking-widest uppercase opacity-90">Cloud API • Conflict Resolution • Local Queue</p>
-                    </div>
+    //                 <div data-aos="fade-up" data-aos-delay="100" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative z-10">
+    //                     <div className="bg-card border border-border p-8 rounded-lg text-center shadow-xl group hover:-translate-y-1 transition-transform backdrop-blur-md">
+    //                         <div className="bg-primary/10 w-20 h-20 mx-auto rounded-md flex items-center justify-center mb-5 border border-primary/20"><window.Icon name="Smartphone" size={40} className="text-primary" /></div>
+    //                         <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">React Native App</h4>
+    //                         <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-muted-foreground mt-1">Offline-First Interface</p>
+    //                     </div>
+    //                     <div className="bg-card border border-border p-8 rounded-lg text-center shadow-xl group hover:-translate-y-1 transition-transform backdrop-blur-md">
+    //                         <div className="bg-primary/10 w-20 h-20 mx-auto rounded-md flex items-center justify-center mb-5 border border-primary/20"><window.Icon name="Monitor" size={40} className="text-primary" /></div>
+    //                         <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">Web Admin Portal</h4>
+    //                         <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-muted-foreground mt-1">Command Dashboard</p>
+    //                     </div>
+    //                 </div>
+    //                 <div data-aos="fade-up" className="bg-primary border border-primary/40 p-8 rounded-lg text-center shadow-2xl mb-4 group hover:-translate-y-1 transition-transform backdrop-blur-md">
+    //                     <window.Icon name="Cloud" size={40} className="mx-auto text-primary-foreground mb-4 drop-shadow-md" />
+    //                     <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">Real-Time Sync Engine</h4>
+    //                     <p className="text-primary-foreground/80 text-sm font-bold tracking-widest uppercase opacity-90">Cloud API • Conflict Resolution • Local Queue</p>
+    //                 </div>
 
-                    <div data-aos="fade-up" data-aos-delay="300" className="bg-card border border-border p-6 rounded-lg text-center flex items-center justify-center gap-5 shadow-2xl mx-auto w-3/4 backdrop-blur-md">
-                        <window.Icon name="Database" size={40} className="text-muted-foreground" />
-                        <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight">Central Postgres DB</h3>
-                    </div>
-                </div>
-            </div>
-        ),
-        notes: "This slide illustrates how SyncVet works from a technical standpoint..."
-    },
+    //                 <div data-aos="fade-up" data-aos-delay="300" className="bg-card border border-border p-6 rounded-lg text-center flex items-center justify-center gap-5 shadow-2xl mx-auto w-3/4 backdrop-blur-md">
+    //                     <window.Icon name="Database" size={40} className="text-muted-foreground" />
+    //                     <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight">Central Postgres DB</h3>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     ),
+    //     notes: "This slide illustrates how SyncVet works from a technical standpoint..."
+    // },
     {
         id: "dataflow",
+        duration: 120,
         title: "Data Flow Diagram",
         content: (
             <div className="flex flex-col items-center justify-center pt-8 max-w-5xl mx-auto w-full">
@@ -392,6 +400,7 @@ window.slidesData = [
     },
     {
         id: "conclusion",
+        duration: 30,
         title: "Conclusion",
         content: (
             <div className="flex flex-col gap-10 pt-4 max-w-6xl mx-auto w-full">
@@ -420,6 +429,7 @@ window.slidesData = [
     },
     {
         id: "references",
+        duration: 0,
         title: "References",
         content: (
             <div data-aos="zoom-in" className="flex flex-col max-w-6xl mx-auto w-full h-[65vh]">
@@ -510,6 +520,7 @@ window.slidesData = [
     },
     {
         id: "qa",
+        duration: 0,
         title: "Q&A",
         content: (
             <div className="flex flex-col items-center justify-center my-auto min-h-[500px] text-center pt-6 pb-12 w-full">
