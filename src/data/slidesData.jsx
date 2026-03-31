@@ -330,7 +330,7 @@ window.slidesData = [
                             <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-muted-foreground mt-1">Command Dashboard</p>
                         </div>
                     </div>
-                    <div className="bg-primary border border-primary/40 p-8 rounded-lg text-center shadow-2xl mb-4 group hover:-translate-y-1 transition-transform backdrop-blur-md">
+                    <div data-aos="fade-up" className="bg-primary border border-primary/40 p-8 rounded-lg text-center shadow-2xl mb-4 group hover:-translate-y-1 transition-transform backdrop-blur-md">
                         <window.Icon name="Cloud" size={40} className="mx-auto text-primary-foreground mb-4 drop-shadow-md" />
                         <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">Real-Time Sync Engine</h4>
                         <p className="text-primary-foreground/80 text-sm font-bold tracking-widest uppercase opacity-90">Cloud API • Conflict Resolution • Local Queue</p>
