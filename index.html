@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncVet Capstone Proposal</title>
+    
+    <!-- Favicon (SyncVet Logo) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23ea580c'/%3E%3Cpolyline points='90 50 75 50 62 85 38 15 25 50 10 50' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Library -->
+    <!-- Custom CSS Variables (Shadcn/Tweakcn) -->
+    <link href="src/globals.css" rel="stylesheet">
+
+    <!-- Tailwind Config for CSS Variables -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+                        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+                        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+                        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
+                        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+                        sidebar: {
+                            DEFAULT: "hsl(var(--sidebar))",
+                            foreground: "hsl(var(--sidebar-foreground))",
+                            primary: "hsl(var(--sidebar-primary))",
+                            "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+                            accent: "hsl(var(--sidebar-accent))",
+                            "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+                            border: "hsl(var(--sidebar-border))",
+                            ring: "hsl(var(--sidebar-ring))",
+                        },
+                        chart: {
+                            1: "hsl(var(--chart-1))",
+                            2: "hsl(var(--chart-2))",
+                            3: "hsl(var(--chart-3))",
+                            4: "hsl(var(--chart-4))",
+                            5: "hsl(var(--chart-5))",
+                        }
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                        xl: "calc(var(--radius) + 4px)",
+                        "2xl": "calc(var(--radius) + 8px)",
+                        "3xl": "calc(var(--radius) + 12px)",
+                        full: "9999px",
+                    },
+                    boxShadow: {
+                        sm: "var(--shadow-sm)",
+                        DEFAULT: "var(--shadow)",
+                        md: "var(--shadow-md)",
+                        lg: "var(--shadow-lg)",
+                        xl: "var(--shadow-xl)",
+                        "2xl": "var(--shadow-2xl)",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            overflow: hidden;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(45, 212, 191, 0.3);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(45, 212, 191, 0.6);
+        }
+
+        .bento-card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1);
+            border: 1px solid hsl(var(--border));
+        }
+    </style>
+</head>
+
+<body class="text-slate-100 h-screen w-screen overflow-hidden">
+    <div id="root" class="w-full h-full"></div>
+
+    <!-- Modular React Components -->
+    <script type="text/babel" src="src/components/Icon.jsx"></script>
+    <script type="text/babel" src="src/data/slidesData.jsx"></script>
+    <script type="text/babel" src="src/App.jsx"></script>
+
+    <!-- Application Entry Point -->
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        // Polling to ensure all external babel scripts are loaded and executed
+        // before attempting to render the root application.
+        const renderApp = () => {
+            if (window.App && window.Icon && window.slidesData) {
+                root.render(<window.App />);
+            } else {
+                setTimeout(renderApp, 100);
+            }
+        };
+        renderApp();
+    </script>
+</body>
+
+</html>
