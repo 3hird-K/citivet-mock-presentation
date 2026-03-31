@@ -18,6 +18,7 @@ window.App = () => {
 
         setTimeout(() => {
             if (window.AOS) {
+                window.AOS.init({ duration: 800, once: false, offset: 20 });
                 // Strip existing animation classes to force a clean re-entry
                 document.querySelectorAll('.aos-animate').forEach(el => {
                     el.classList.remove('aos-animate');

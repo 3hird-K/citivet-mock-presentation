@@ -331,7 +331,7 @@ window.slidesData = [
                         </div>
                     </div>
                     <div className="bg-primary border border-primary/40 p-8 rounded-lg text-center shadow-2xl mb-4 group hover:-translate-y-1 transition-transform backdrop-blur-md">
-                        <window.Icon name="Cloud" size={40} className="text-primarymx-auto text-primary-foreground mb-4 drop-shadow-md" />
+                        <window.Icon name="Cloud" size={40} className="mx-auto text-primary-foreground mb-4 drop-shadow-md" />
                         <h4 className="font-black text-foreground text-2xl tracking-tight mb-2">Real-Time Sync Engine</h4>
                         <p className="text-primary-foreground/80 text-sm font-bold tracking-widest uppercase opacity-90">Cloud API • Conflict Resolution • Local Queue</p>
                     </div>
@@ -388,6 +388,95 @@ window.slidesData = [
             </div>
         ),
         notes: "To summarize, SyncVet directly addresses the critical problems..."
+    },
+    {
+        id: "references",
+        title: "References",
+        content: (
+            <div data-aos="zoom-in" className="flex flex-col max-w-6xl mx-auto w-full h-[65vh]">
+                <div className="bg-card p-6 md:p-8 rounded-lg border border-border shadow-xl backdrop-blur-md flex-1 overflow-hidden flex flex-col">
+                    <div className="flex items-center gap-4 mb-6 shrink-0 border-b border-border pb-4">
+                        <window.Icon name="BookMarked" size={32} className="text-primary" />
+                        <h3 className="text-2xl font-black text-foreground tracking-tight">Literature & Citations</h3>
+                        <div className="ml-auto bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-primary/20">54 Sources</div>
+                    </div>
+                    <div className="overflow-y-auto custom-scrollbar pr-4 space-y-3 flex-1 pb-4">
+                        {[
+                            "Rabies Alliance. (2024). Philippines rabies status and data.",
+                            "Ngo‑Thi, T.‑A., et al. (2024). Advancing mHealth research in low‑resource settings. Annals of the New York Academy of Sciences, 1540(1), 123–138.",
+                            "Holdt Sommers, J., et al. (2022). A systematic review of the Technology Acceptance Model in health information systems. Healthcare, 6(3), 100.",
+                            "World Health Organization. (2022). Rabies (Health topic page).",
+                            "GARC (Global Alliance for Rabies Control). (n.d.). GARC App.",
+                            "World Health Organization. (2024). Rabies. https://www.who.int/news-room/fact-sheets/detail/rabies",
+                            "Ahmed, M. F., et al. (2018). A smartphone‑based application improves the accuracy of animal disease reporting. Frontiers in Veterinary Science, 5, 54.",
+                            "Castañeda, K. A., et al. (2024). A centralized mobile app for dog rabies vaccination reporting by city veterinary offices and private veterinarians. Journal of Computing and Science in Humanities.",
+                            "Department of Agriculture – Regional Field Office 3. (n.d.). Philippine Animal Health Information System (Phil‑AHIS). DA‑RFO III.",
+                            "Department of Health (DOH). (2026, March 7). DOH logs 17 rabies cases from January 4 to February 21, 2026. Manila Times / GMA Network.",
+                            "Philippine News Agency (PNA). (2026, March 5). PH records 300-400 annual rabies deaths, 4M animal bite cases.",
+                            "World Health Organization (WHO). (2024). Rabies fact sheet.",
+                            "Castañeda, K. A., Lim, J. A., & Tan, R. M. (2024). A centralized mobile app for dog rabies vaccination reporting by private and city veterinarians in Davao City. Journal of Computing and Science in Humanities.",
+                            "Pawnec Philippines. (2025). eHealth Card: Beta launch ready to jab, scan & go in Metro Manila veterinary clinics.",
+                            "Bureau of Animal Industry. (2026). RADSS-PhilAHIS: Online reporting system for monitoring animal health events.",
+                            "VetCloud Software. (2025). Vet Cloud Software: #1 veterinary clinic management in the Philippines.",
+                            "Vetport. (2020). How to choose the best software solution for your veterinary clinic.",
+                            "Costa, J. P., et al. (2023). Modelling the predictors of mobile health (mHealth) adoption among healthcare professionals. International Journal of Environmental Research and Public Health.",
+                            "Panayotov, P., et al. (2017). The Ilocos Norte Communities against Rabies Exposure Elimination Project in the Philippines.",
+                            "Reyes, M. L., & Santos, J. P. (2025). Navigating veterinary practice in the digital age: Implementing a veterinary information management system. eJournals.ph.",
+                            "Department of Agriculture - Bureau of Animal Industry. (n.d.). Philippine Animal Health Information System (PhilAHIS).",
+                            "PCHRD-DOST. (2025). RabDash DC: Rabies data analytics dashboard.",
+                            "City Veterinary Office – Cagayan de Oro. (2026). High-density rabies vaccination program reports.",
+                            "Benis, A., et al. (2021). One Digital Health: A unified framework for future health ecosystems. Journal of Medical Internet Research.",
+                            "Benis, A., et al. (2023). One Digital Health intervention for monitoring human and animal health. JMIR Public Health and Surveillance.",
+                            "Cabrera, G. R. (2024). A centralized mobile app for dog rabies vaccination reporting by private and city veterinarians in Davao City.",
+                            "Department of Health (DOH). (2026, March 7). DOH logs 17 rabies cases in first two months of 2026. Manila Standard.",
+                            "Department of Health (DOH). (2026). Rabies update: 65% drop in early cases. GMA Network / Manila Times.",
+                            "Gibson, A. D., et al. (2018). One million dog vaccinations recorded on mHealth innovation used to direct teams in numerous rabies control campaigns. PLOS ONE.",
+                            "Manila Times. (2026, March 8). Philippines rabies cases down 65% as DOH urges pet vaccination.",
+                            "Monroe, B., et al. (2021). Every dog has its data: Evaluation of a technology-aided rabies vaccination campaign. PLOS Neglected Tropical Diseases.",
+                            "Outbreak News Today. (2026, March). Philippines report decrease in rabies in early 2026.",
+                            "Philippine News Agency (PNA). (2026, March 5). PH records 300-400 annual rabies deaths, 4M animal bite cases. https://www.pna.gov.ph/articles/1270326",
+                            "Philippine News Agency (PNA). (2025, March 3). CDO launches high-density rabies vaccination drive.",
+                            "Subrata, I. M., et al. (2022). Designing a rabies control mobile application for a community-based rabies surveillance system during COVID-19 in Bali. Veterinary World.",
+                            "World Health Organization (WHO). (2025). Rabies in the South-East Asia Region.",
+                            "City Veterinary Office – Cagayan de Oro. (2026). High-density rabies vaccination program and walk-in services.",
+                            "City Veterinary Office – Cagayan de Oro. (n.d.). Frontline services: Rabies vaccination and stray animal management. City Government of Cagayan de Oro.",
+                            "Department of Agriculture – Regional Field Office 10 (DA RFO-10). (2026). Responsible pet ownership key to rabies eradication.",
+                            "Reissig, L., et al. (2022). Why farmers perceive the use of e-government services as burdensome. Government Information Quarterly.",
+                            "World Organisation for Animal Health (WOAH). (2021). Digital technologies and implications for Veterinary Services.",
+                            "Philippine Information Agency (PIA). (2025, September 24). DOH urges continued caution against rabies despite decline in cases.",
+                            "ABS-CBN News. (2025, June 2). DOH: Rabies cases in 2025 down 32 percent from last year.",
+                            "Inquirer.net. (2025, August 16). DOH logs 211 rabies cases from January to August 2025.",
+                            "Reuters. (2017). Vets in Philippines turn to technology to track and tackle rabies.",
+                            "Mission Rabies. (n.d.). WVS Data Collection App for rabies vaccination tracking.",
+                            "PCHRD-DOST. (n.d.). RabDash DC: Rabies Data Analytics Dashboard.",
+                            "GALVmed. (2025). Digital inclusion: Increasing access to animal health digital technologies by women.",
+                            "ICAR-NIVEDI. (2025). National e-Governance Award for livestock disease forecasting platform.",
+                            "Xu, X., et al. (2025). Enhancing rural veterinary governance: Coupling digital technology with public awareness. Frontiers in Veterinary Science.",
+                            "HealthforAnimals. (n.d.). Digital revolution in animal health.",
+                            "World Bank. (2025). Unlocking digital citizen-centric service delivery.",
+                            "National Awards for e-Governance. (2024). Citations for citizen-centric and e-governance projects in animal health.",
+                            "Cabrera, G. R., et al. (2024). RabDash mobile application for centralized rabies data collection in Davao City."
+                        ].filter((v, i, a) => a.indexOf(v) === i).map((ref, i) => {
+                            const urlRegex = /(https?:\/\/[^\s]+)/g;
+                            const parts = ref.split(urlRegex);
+                            return (
+                                <div key={i} className="text-muted-foreground text-xs md:text-sm p-3 bg-muted/50 rounded-md border border-border/50 hover:bg-muted/80 transition-colors flex gap-3 shadow-sm">
+                                    <span className="text-secondary-foreground/60 font-black shrink-0 select-none w-6 text-right">[{i + 1}]</span>
+                                    <span className="leading-snug break-words">
+                                        {parts.map((part, idx) => 
+                                            urlRegex.test(part) ? 
+                                            <a key={idx} href={part} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">{part}</a> 
+                                            : part
+                                        )}
+                                    </span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        ),
+        notes: "Here are the primary references and related literature that informed our research and methodology."
     },
     {
         id: "qa",
