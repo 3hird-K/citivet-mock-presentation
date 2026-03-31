@@ -64,6 +64,17 @@ window.slidesData = [
                 <p data-aos="fade-up" data-aos-delay="200" className="text-2xl md:text-4xl text-muted-foreground font-medium tracking-tight h-auto max-w-2xl px-4">
                     Mobile and Web Platform for Animal Health Services - CDO
                 </p>
+                <div data-aos="fade-up" data-aos-delay="300" className="mt-8">
+                    <a 
+                        href="https://docs.google.com/document/d/1Ki2aQpa6QYzyRa_gN38tGrq83iWdNgAY/edit?usp=drive_link&ouid=100221485176403184332&rtpof=true&sd=true" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-8 py-3.5 bg-card hover:bg-muted border border-border text-foreground rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group"
+                    >
+                        <window.Icon name="FileText" size={20} className="text-primary group-hover:scale-110 transition-transform" />
+                        <span className="font-bold tracking-widest uppercase text-xs md:text-sm text-muted-foreground group-hover:text-foreground transition-colors">Project Documentation</span>
+                    </a>
+                </div>
                 {/* <p data-aos="fade-up" data-aos-delay="200" className="text-xl md:text-2xl text-muted-foreground font-medium tracking-tight h-auto max-w-2xl px-4">
                     Cagayan De Oro City Veterinary Office
                 </p> */}
