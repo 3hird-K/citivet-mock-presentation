@@ -1,5 +1,18 @@
 const ZoomableImage = ({ src, alt, className }) => {
     const [isOpen, setIsOpen] = React.useState(false);
+
+    React.useEffect(() => {
+        const handleEsc = (e) => e.key === 'Escape' && setIsOpen(false);
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            window.addEventListener('keydown', handleEsc);
+        }
+        return () => {
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, [isOpen]);
+
     return (
         <React.Fragment>
             <img
@@ -8,20 +21,25 @@ const ZoomableImage = ({ src, alt, className }) => {
                 className={`cursor-pointer transition-transform hover:scale-[1.02] ${className}`}
                 onClick={() => setIsOpen(true)}
             />
-            {isOpen && (
+            {isOpen && window.ReactDOM && window.ReactDOM.createPortal(
                 <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-sm p-4 md:p-12 cursor-pointer transition-opacity"
+                    className="fixed inset-0 z-[100000] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6 md:p-12 cursor-pointer transition-opacity"
                     onClick={() => setIsOpen(false)}
                 >
                     <img
                         src={src}
                         alt={alt}
-                        className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-border"
+                        className="max-w-[95vw] max-h-[90vh] object-contain rounded-2xl shadow-[0_0_150px_rgba(0,0,0,0.9)] border border-white/5 bg-white p-2 md:p-4"
+                        onClick={(e) => e.stopPropagation()}
                     />
-                    <button className="absolute top-6 right-6 bg-card text-foreground p-3 rounded-lg border border-border hover:bg-muted transition-colors shadow-lg">
+                    <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 lg:top-10 lg:right-10 bg-white/10 hover:bg-white/20 text-white p-4 rounded-full border border-white/20 hover:scale-110 transition-all shadow-2xl z-[100001]">
                         <window.Icon name="X" size={32} />
                     </button>
-                </div>
+                    <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase select-none">
+                        Click anywhere or press Esc to close
+                    </p>
+                </div>,
+                document.body
             )}
         </React.Fragment>
     );
@@ -352,7 +370,7 @@ window.slidesData = [
             <div className="flex flex-col items-center justify-center pt-8 max-w-5xl mx-auto w-full">
                 <div data-aos="zoom-in" className="bg-card p-4 md:p-8 rounded-lg border border-border shadow-md relative w-full">
                     <div className="absolute inset-0 bg-primary/10 rounded-lg -z-10 blur-xl"></div>
-                    <ZoomableImage src="src/assets/image.png" alt="SyncVet Data Flow Diagram" className="w-full h-auto max-h-[80vh] object-contain rounded-md shadow-sm border border-border/50" />
+                    <ZoomableImage src="src/assets/image.png" alt="SyncVet Data Flow Diagram" className="w-full h-auto max-h-[55vh] object-contain rounded-md shadow-sm border border-border/50" />
                 </div>
                 <p data-aos="fade-up" data-aos-delay="200" className="mt-8 text-lg text-muted-foreground font-medium text-center bg-muted/50 px-8 py-5 rounded-lg border border-border shadow-sm">
                     Illustrates the comprehensive synchronization cycle between the offline-first mobile app and the central Postgres database. Click image to enlarge.

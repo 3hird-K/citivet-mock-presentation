@@ -1,5 +1,24 @@
 const { useState, useEffect } = React;
 
+const LiveClock = () => {
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => setTime(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const dateOptions = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+    const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit' };
+    
+    return (
+        <div className="hidden lg:flex flex-col items-end justify-center select-none bg-card px-4 py-2 rounded-md border border-border shadow-sm" data-aos="fade-left" data-aos-delay="100">
+            <span className="text-[11px] font-black tracking-widest uppercase text-muted-foreground leading-none">{time.toLocaleDateString('en-US', dateOptions)}</span>
+            <span className="text-sm font-black tracking-wider text-primary leading-tight mt-1">{time.toLocaleTimeString('en-US', timeOptions)}</span>
+        </div>
+    );
+};
+
 window.App = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showNotes, setShowNotes] = useState(false);
@@ -80,9 +99,14 @@ window.App = () => {
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground tracking-widest uppercase py-1">{slides[currentSlide].title}</h2>
                             <div className="w-24 h-2 bg-primary rounded-full mt-4" />
                         </div>
-                        <div className="text-muted-foreground font-black tracking-widest text-xl hidden md:block select-none pb-2 bg-card px-5 py-3 rounded-md border border-border shadow-sm">
-                            <span className="text-foreground">{String(currentSlide + 1).padStart(2, '0')}</span>
-                            <span className="opacity-40 ml-1">/ {String(slides.length).padStart(2, '0')}</span>
+                        <div className="flex items-stretch gap-4">
+                            <LiveClock />
+                            <div className="text-muted-foreground font-black tracking-widest text-xl hidden md:flex items-center justify-center select-none bg-card px-5 py-3 rounded-md border border-border shadow-sm" data-aos="fade-left">
+                                <div>
+                                    <span className="text-foreground">{String(currentSlide + 1).padStart(2, '0')}</span>
+                                    <span className="opacity-40 ml-1">/ {String(slides.length).padStart(2, '0')}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
