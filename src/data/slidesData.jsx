@@ -1,8 +1,14 @@
 const ZoomableImage = ({ src, alt, className }) => {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isZoomedIn, setIsZoomedIn] = React.useState(false);
 
     React.useEffect(() => {
-        const handleEsc = (e) => e.key === 'Escape' && setIsOpen(false);
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') {
+                setIsOpen(false);
+                setIsZoomedIn(false);
+            }
+        };
         if (isOpen) {
             document.body.style.overflow = 'hidden';
             window.addEventListener('keydown', handleEsc);
@@ -23,21 +29,35 @@ const ZoomableImage = ({ src, alt, className }) => {
             />
             {isOpen && window.ReactDOM && window.ReactDOM.createPortal(
                 <div
-                    className="fixed inset-0 z-[100000] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6 md:p-12 cursor-pointer transition-opacity"
-                    onClick={() => setIsOpen(false)}
+                    className="fixed inset-0 z-[100000] bg-black/95 backdrop-blur-xl overflow-auto custom-scrollbar"
+                    onClick={() => { setIsOpen(false); setIsZoomedIn(false); }}
                 >
-                    <img
-                        src={src}
-                        alt={alt}
-                        className="max-w-[95vw] max-h-[90vh] object-contain rounded-2xl shadow-[0_0_150px_rgba(0,0,0,0.9)] border border-white/5 bg-white p-2 md:p-4"
-                        onClick={(e) => e.stopPropagation()}
-                    />
-                    <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 lg:top-10 lg:right-10 bg-white/10 hover:bg-white/20 text-white p-4 rounded-full border border-white/20 hover:scale-110 transition-all shadow-2xl z-[100001]">
+                    <div className={`min-h-full min-w-full flex ${isZoomedIn ? 'items-start justify-center' : 'items-center justify-center'} p-4 md:p-12`}>
+                        <div className="relative">
+                            <img
+                                src={src}
+                                alt={alt}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsZoomedIn(!isZoomedIn);
+                                }}
+                                className={`${isZoomedIn ? 'max-w-none w-[2000px] h-auto cursor-zoom-out' : 'max-w-[95vw] max-h-[90vh] cursor-zoom-in'} object-contain rounded-2xl shadow-[0_0_150px_rgba(0,0,0,0.9)] border border-white/5 bg-white p-2 md:p-4 transition-all duration-300`}
+                            />
+                        </div>
+                    </div>
+                    
+                    <button 
+                        onClick={(e) => { e.stopPropagation(); setIsOpen(false); setIsZoomedIn(false); }} 
+                        className="fixed top-6 right-6 lg:top-10 lg:right-10 bg-black/50 hover:bg-black/80 text-white p-4 rounded-full border border-white/20 hover:scale-110 transition-all shadow-2xl z-[100001] backdrop-blur-md"
+                    >
                         <window.Icon name="X" size={32} />
                     </button>
-                    <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase select-none">
-                        Click anywhere or press Esc to close
-                    </p>
+                    
+                    {!isZoomedIn && (
+                        <p className="fixed bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase select-none pointer-events-none bg-black/50 px-6 py-2 rounded-full backdrop-blur-md border border-white/10">
+                            Click image to zoom in, anywhere else to close
+                        </p>
+                    )}
                 </div>,
                 document.body
             )}
