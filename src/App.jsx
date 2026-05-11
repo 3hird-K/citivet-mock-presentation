@@ -104,98 +104,94 @@ window.App = () => {
         const handleKeyDown = (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'n') setShowNotes(prev => !prev);
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [currentSlide, slides.length]);
 
-    if (!slides.length || !Icon) return <div className="text-foreground p-10">Loading components...</div>;
+    if (!slides.length || !Icon) return <div className="text-foreground p-10 flex items-center justify-center h-screen font-black text-4xl animate-pulse">Initializing SyncVet...</div>;
 
     return (
         <div className="h-screen w-screen flex flex-col relative bg-background overflow-hidden font-sans antialiased text-foreground mx-auto">
+            
+            {/* Minimal Background Pattern */}
+            <div className="absolute inset-0 bg-grid opacity-[0.03] pointer-events-none" />
 
-            {/* Header Navbar Floating Above */}
-            {/* <nav className="h-[80px] mb-[-32px] px-8 md:px-12 rounded-lg py-12 border border-border flex justify-between items-center bg-card/80 backdrop-blur-xl shadow-md shrink-0 z-30 max-w-[1700px] w-full mx-auto mt-6">
-                <div className="flex items-center gap-5 py-24">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-primary rounded-md flex items-center justify-center shadow-lg border border-primary">
-                        <Icon name="Activity" size={28} className="text-primary-foreground" />
-                    </div>
-                    <div className="flex flex-col">
-                        <h1 className="font-black text-foreground text-xl md:text-2xl tracking-tight leading-none">SyncVet Defense</h1>
-                        <span className="text-xs font-black tracking-widest uppercase text-primary mt-1.5 block">CAPSTONE 2026</span>
-                    </div>
-                </div>
-                <button
-                    onClick={() => setShowNotes(!showNotes)}
-                    className="bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground px-6 py-3.5 rounded-md text-sm font-black tracking-widest uppercase border border-border transition-all duration-300 flex items-center gap-3 shadow-sm active:scale-95"
-                >
-                    <Icon name={showNotes ? "EyeOff" : "Eye"} size={18} />
-                    <span className="hidden sm:inline">{showNotes ? 'Hide Script' : 'Display Script'}</span>
-                </button>
-            </nav> */}
-
-            {/* Content Body */}
-            <div className="flex-1 flex flex-col relative overflow-hidden bg-background z-20">
-                <div className="flex-1 flex flex-col p-8 md:p-12 overflow-hidden relative" key={`slide-wrapper-${slideKey}`}>
-                    {/* Slide Title */}
-                    <div className="mb-8 flex items-end justify-between shrink-0 max-w-[1700px] w-full mx-auto" data-aos="fade-down" data-aos-easing="ease-out-cubic">
-                        <div>
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground tracking-widest uppercase py-1">{slides[currentSlide].title}</h2>
-                            <div className="w-24 h-2 bg-primary rounded-full mt-4" />
-                        </div>
-                        <div className="flex items-stretch gap-4">
-                            <SlideTimer duration={slides[currentSlide].duration} key={`slide-timer-${slideKey}`} />
-                            <LiveClock />
-                            <div className="text-muted-foreground font-black tracking-widest text-xl hidden md:flex items-center justify-center select-none bg-card px-5 py-3 rounded-md border border-border shadow-sm" data-aos="fade-left">
-                                <div>
-                                    <span className="text-foreground">{String(currentSlide + 1).padStart(2, '0')}</span>
-                                    <span className="opacity-40 ml-1">/ {String(slides.length).padStart(2, '0')}</span>
+            {/* Main Content Area */}
+            <main className="flex-1 flex flex-col relative overflow-hidden pt-8 pb-20 px-8 md:px-12 lg:px-16">
+                <div className="max-w-[1500px] w-full mx-auto h-full flex flex-col" key={`slide-wrapper-${slideKey}`}>
+                    
+                    {/* Slide Header (Integrated) */}
+                    <header className="mb-10 flex items-start justify-between shrink-0 gap-6" data-aos="fade-down">
+                        <div className="max-w-4xl">
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/20">
+                                    <Icon name="Activity" size={16} className="text-primary" />
                                 </div>
+                                <span className="text-[10px] font-black tracking-[0.3em] uppercase text-primary/70">SyncVet Defense • Slide {currentSlide + 1}</span>
                             </div>
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground tracking-tight leading-tight uppercase py-1 border-l-4 border-primary pl-6">
+                                {slides[currentSlide].title}
+                            </h2>
                         </div>
-                    </div>
+                        
+                        <div className="flex items-center gap-3">
+                            <LiveClock />
+                            <SlideTimer duration={slides[currentSlide].duration} key={`slide-timer-${slideKey}`} />
+                        </div>
+                    </header>
 
-                    {/* Main Slide Area */}
-                    <div id="slide-scroll-container" className="flex-1 w-full overflow-y-auto overflow-x-hidden pr-4 custom-scrollbar flex flex-col max-w-[1700px] mx-auto z-10">
+                    {/* Slide Body */}
+                    <div id="slide-scroll-container" className="flex-1 w-full overflow-y-auto overflow-x-hidden pr-2 custom-scrollbar flex flex-col justify-center z-10">
                         {slides[currentSlide].content}
                     </div>
-
-                    {/* Footer navigation */}
-                    <div className="pt-0 mt-0 mb-[-2rem] flex justify-between items-center shrink-0 max-w-[1700px] w-full mx-auto" data-aos="fade-up" data-aos-offset="0">
-                        <button onClick={prevSlide} disabled={currentSlide === 0} className="w-14 h-14 md:w-16 md:h-16 rounded-md flex items-center justify-center bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-muted disabled:opacity-20 transition-all hover:-translate-x-1 duration-300 shadow-sm">
-                            <Icon name="ChevronLeft" size={28} />
-                        </button>
-
-                        <div className="flex gap-3 px-8 py-4 rounded-md bg-card border border-border hidden sm:flex shadow-sm">
-                            {slides.map((_, i) => (
-                                <button key={i} onClick={() => setCurrentSlide(i)} className={`h-2 rounded-full transition-all duration-500 ${i === currentSlide ? 'w-12 bg-primary shadow-sm' : 'w-3 bg-muted-foreground/30 hover:bg-muted-foreground'}`} aria-label={`Go to slide ${i + 1}`} />
-                            ))}
-                        </div>
-
-                        <button onClick={nextSlide} disabled={currentSlide === slides.length - 1} className="w-14 h-14 md:w-16 md:h-16 rounded-md flex items-center justify-center bg-primary text-primary-foreground disabled:opacity-20 transition-all hover:translate-x-1 duration-300 shadow-md border border-primary">
-                            <Icon name="ChevronRight" size={28} />
-                        </button>
-                    </div>
                 </div>
 
-                {/* Presenter Notes Overlay */}
+                {/* Simplified Bottom Controls */}
+                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] max-w-[1200px] flex justify-between items-center z-50 pointer-events-none px-4">
+                    <button onClick={prevSlide} disabled={currentSlide === 0} className="w-12 h-12 rounded-xl flex items-center justify-center bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-muted disabled:opacity-10 transition-all pointer-events-auto shadow-sm active:scale-95">
+                        <Icon name="ChevronLeft" size={24} />
+                    </button>
+
+                    <div className="flex items-center gap-4 pointer-events-auto">
+                        <div className="flex gap-1.5 px-4 py-2.5 rounded-full bg-muted/50 border border-border/50 hidden sm:flex">
+                            {slides.map((_, i) => (
+                                <button 
+                                    key={i} 
+                                    onClick={() => setCurrentSlide(i)} 
+                                    className={`h-1.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'w-6 bg-primary' : 'w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50'}`} 
+                                    aria-label={`Go to slide ${i + 1}`} 
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    <button onClick={nextSlide} disabled={currentSlide === slides.length - 1} className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary text-primary-foreground disabled:opacity-10 transition-all pointer-events-auto shadow-lg border border-primary active:scale-95">
+                        <Icon name="ChevronRight" size={24} />
+                    </button>
+                </div>
+
+                {/* Script Overlay (Toned Down) */}
                 {showNotes && (
-                    <div className="absolute inset-x-0 bottom-0 bg-card/95 backdrop-blur-xl px-8 py-8 md:px-14 border-t border-border z-50 shadow-2xl" data-aos="slide-up" data-aos-duration="400">
-                        <div className="max-w-[1700px] mx-auto flex gap-6 md:gap-10 items-start">
-                            <div className="bg-primary/10 p-5 rounded-md shrink-0 mt-1 border border-primary/20">
-                                <Icon name="MessageSquareText" size={36} className="text-primary" />
+                    <div className="fixed inset-x-0 bottom-0 bg-card/98 backdrop-blur-xl px-8 py-8 md:px-16 border-t border-border z-[100] shadow-2xl transition-all duration-500 animate-in slide-in-from-bottom">
+                        <div className="max-w-[1200px] mx-auto flex gap-8 items-start">
+                            <div className="bg-primary/5 p-4 rounded-xl shrink-0 border border-primary/10">
+                                <Icon name="MessageSquareText" size={28} className="text-primary" />
                             </div>
-                            <div className="max-h-56 overflow-y-auto custom-scrollbar pr-6 flex-1">
-                                <h4 className="text-[12px] md:text-sm font-black tracking-widest text-primary mb-3 uppercase">Presenter Script</h4>
-                                <p className="text-xl md:text-2xl font-medium text-foreground leading-relaxed font-serif italic text-balance">{slides[currentSlide].notes}</p>
+                            <div className="max-h-[25vh] overflow-y-auto custom-scrollbar pr-6 flex-1">
+                                <h4 className="text-[10px] font-black tracking-[0.2em] text-primary/60 uppercase mb-3">Presenter Notes</h4>
+                                <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">{slides[currentSlide].notes}</p>
                             </div>
-                            <button onClick={() => setShowNotes(false)} className="text-muted-foreground hover:text-foreground p-3 shrink-0 transition-colors bg-muted rounded-md border border-border hover:bg-destructive/20 hover:text-destructive">
-                                <Icon name="X" size={28} />
+                            <button onClick={() => setShowNotes(false)} className="text-muted-foreground hover:text-foreground p-2 shrink-0 transition-all bg-muted/50 rounded-lg">
+                                <Icon name="X" size={20} />
                             </button>
                         </div>
                     </div>
                 )}
-            </div>
+            </main>
         </div>
     );
 };
+
+

@@ -9,6 +9,11 @@
     <!-- Favicon (SyncVet Logo) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23ea580c'/%3E%3Cpolyline points='90 50 75 50 62 85 38 15 25 50 10 50' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
     <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -20,12 +25,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- Custom CSS Variables (Shadcn/Tweakcn) -->
+    <!-- Custom CSS -->
     <link href="src/globals.css" rel="stylesheet">
 
-    <!-- Tailwind Config for CSS Variables -->
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -39,23 +45,7 @@
                         muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
                         accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
                         card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-                        sidebar: {
-                            DEFAULT: "hsl(var(--sidebar))",
-                            foreground: "hsl(var(--sidebar-foreground))",
-                            primary: "hsl(var(--sidebar-primary))",
-                            "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-                            accent: "hsl(var(--sidebar-accent))",
-                            "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-                            border: "hsl(var(--sidebar-border))",
-                            ring: "hsl(var(--sidebar-ring))",
-                        },
-                        chart: {
-                            1: "hsl(var(--chart-1))",
-                            2: "hsl(var(--chart-2))",
-                            3: "hsl(var(--chart-3))",
-                            4: "hsl(var(--chart-4))",
-                            5: "hsl(var(--chart-5))",
-                        }
+                        destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },
                     },
                     borderRadius: {
                         lg: "var(--radius)",
@@ -67,12 +57,13 @@
                         full: "9999px",
                     },
                     boxShadow: {
-                        sm: "var(--shadow-sm)",
-                        DEFAULT: "var(--shadow)",
-                        md: "var(--shadow-md)",
-                        lg: "var(--shadow-lg)",
-                        xl: "var(--shadow-xl)",
-                        "2xl": "var(--shadow-2xl)",
+                        soft: "var(--shadow-soft)",
+                        medium: "var(--shadow-medium)",
+                        premium: "var(--shadow-premium)",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Outfit', 'Lora', 'serif'],
                     }
                 }
             }
@@ -80,44 +71,13 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #020617;
+            background-color: hsl(var(--background));
             overflow: hidden;
         }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(45, 212, 191, 0.3);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(45, 212, 191, 0.6);
-        }
-
-        .bento-card {
-            background-color: hsl(var(--card));
-            border: 1px solid hsl(var(--border));
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .bento-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1);
-            border: 1px solid hsl(var(--border));
-        }
     </style>
+
 </head>
 
 <body class="text-slate-100 h-screen w-screen overflow-hidden">
