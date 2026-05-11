@@ -448,7 +448,7 @@ window.slidesData = [
         content: (
             <div className="flex flex-col items-center justify-center pt-8 max-w-5xl mx-auto w-full">
                 <div data-aos="zoom-in" className="bg-card p-4 md:p-6 rounded-2xl border border-border shadow-md relative w-full overflow-hidden">
-                    <ZoomableImage src="src/assets/dataflowdiagram.png" alt="SyncVet Data Flow Diagram" className="w-full h-auto max-h-[55vh] object-contain rounded-xl border border-border/50 bg-white/5 dark:bg-black/20 p-1" />
+                    <ZoomableImage src="src/assets/dataflowdiagram.jpg" alt="SyncVet Data Flow Diagram" className="w-full h-auto max-h-[55vh] object-contain rounded-xl border border-border/50 bg-white/5 dark:bg-black/20 p-1" />
                 </div>
                 <p data-aos="fade-up" data-aos-delay="200" className="mt-8 text-sm md:text-base text-muted-foreground font-medium text-center bg-muted/30 px-8 py-4 rounded-xl border border-border">
                     <span className="text-primary font-black uppercase tracking-widest text-[10px] block mb-1">Process Logic</span>
