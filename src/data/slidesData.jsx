@@ -94,7 +94,7 @@ window.slidesData = [
                         href="https://docs.google.com/document/d/1E8l9FYV4jhtoRUmHWkaCyxX7IwUQsTf5/edit"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-premium"
+                        className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground rounded-full font-black tracking-[0.2em] uppercase text-[10px] border border-white/10 hover:border-white/20 transition-all duration-300 active:scale-95 group backdrop-blur-md"
                     >
                         <window.Icon name="FileText" size={16} className="group-hover:rotate-12 transition-transform" />
                         <span>View Documentation</span>
@@ -298,7 +298,7 @@ window.slidesData = [
                             "Covers urban & peri-urban barangays in CDO",
                             "Offline field capture & walk-in records",
                             "Batch registration & QR pet passports",
-                            "Predictive vaccine & resource forecasting"
+                            "Current-month forecasting using past-month data"
                         ].map((item, i) => (
                             <li key={i} className="flex gap-4 text-foreground font-medium items-center p-3 hover:bg-muted/30 transition-colors rounded-xl">
                                 <window.Icon name="Check" size={14} className="text-primary shrink-0" />
