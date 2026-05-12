@@ -175,8 +175,8 @@ window.slidesData = [
                     {[
                         { title: "Disconnected Systems", icon: "Link2Off", desc: "Field and walk-in records are completely separated." },
                         { title: "No Mobile Tool", icon: "Smartphone", desc: "Lack of an offline-ready application for field data capture." },
-                        { title: "Reactive Planning", icon: "Brain", desc: "Lack of predictive tools leads to resource stockouts or waste." },
-                        { title: "Delayed Integration", icon: "Clock", desc: "No real-time data access significantly slows down critical decisions." }
+                        { title: "Delayed Integration", icon: "Clock", desc: "No real-time data access significantly slows down critical decisions." },
+                        { title: "Reactive Planning", icon: "Brain", desc: "Lack of predictive tools leads to resource stockouts or waste." }
                     ].map((p, i) => (
                         <div key={i} data-aos="fade-up" data-aos-delay={`${i * 100}`} className="flex items-center gap-5 p-5 rounded-xl bg-muted/20 border border-border/50">
                             <div className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center shrink-0">
@@ -408,6 +408,73 @@ window.slidesData = [
         notes: "SyncVet is the only system offering offline entry, batch entry, QR code, offline sync, and zero deployment cost..."
     },
     {
+        id: "methodology",
+        duration: 90,
+        title: "Software Development Methodology",
+        content: (
+            <div className="flex flex-col gap-8 pt-4 max-w-6xl mx-auto w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    {/* Left Side: Framework & Process */}
+                    <div className="space-y-10">
+                        <div data-aos="fade-right">
+                            <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-3 block">Development Framework</span>
+                            <h3 className="text-4xl font-black text-foreground tracking-tighter uppercase mb-4">Agile Scrum</h3>
+                            <p className="text-muted-foreground font-medium leading-relaxed">
+                                Iterative development through <span className="text-primary font-bold">2-week Sprints</span> for rapid prototyping and continuous testing.
+                            </p>
+                        </div>
+
+                        {/* Scrum Roles - Minimalist */}
+                        <div data-aos="fade-right" data-aos-delay="100" className="space-y-4">
+                            <h4 className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] border-l-2 border-primary pl-4">Team Roles</h4>
+                            <div className="flex flex-wrap gap-3">
+                                {["Scrum Master", "Full-Stack Dev", "UI/UX Designer", "QA Specialist"].map((role, i) => (
+                                    <div key={i} className="px-4 py-2 bg-card border border-border rounded-full text-xs font-bold text-foreground">
+                                        {role}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Sprint Lifecycle - Simple List */}
+                        <div data-aos="fade-right" data-aos-delay="200" className="space-y-4">
+                            <h4 className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] border-l-2 border-primary pl-4">Sprint Cycle</h4>
+                            <div className="grid grid-cols-2 gap-4">
+                                {["Planning", "Development", "Stand-ups", "Review & Retro"].map((step, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{step}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side: Visual Aid & Backlog */}
+                    <div className="space-y-8">
+                        <div data-aos="zoom-in" className="bg-card p-3 rounded-2xl border border-border shadow-soft relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                            <ZoomableImage src="src/assets/scrumagile.jpg" alt="Scrum Methodology" className="w-full h-auto object-contain rounded-xl" />
+                        </div>
+
+                        <div data-aos="fade-up" className="bg-primary/5 border border-primary/10 p-6 rounded-2xl">
+                            <h4 className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-4">Core Backlog</h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
+                                {["Offline-First Mobile", "Admin Dashboard", "QR Pet Passports", "ML Forecasting"].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase tracking-tight">
+                                        <window.Icon name="ChevronRight" size={14} className="text-primary" />
+                                        {item}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+        notes: "We adopted Agile Scrum for its iterative nature. Our 2-week sprints allowed us to handle complex offline-sync requirements. Roles were clearly defined, and our product backlog focused on the core features like offline capture and QR passports."
+    },
+    {
         id: "usecase",
         duration: 90,
         title: "Use Case Diagram",
@@ -457,6 +524,88 @@ window.slidesData = [
             </div>
         ),
         notes: "This data flow diagram illustrates how records captured offline in the field are queued locally and synchronized to the central database once connection is restored..."
+    },
+    {
+        id: "requirements",
+        duration: 90,
+        title: "System Requirements",
+        content: (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 max-w-6xl mx-auto w-full">
+                {/* Hardware Section */}
+                <div data-aos="fade-right" className="space-y-6">
+                    <div className="flex items-center gap-3 mb-2">
+                        <div className="bg-primary/10 p-2 rounded-lg text-primary">
+                            <window.Icon name="Cpu" size={24} />
+                        </div>
+                        <h3 className="text-xl font-black text-foreground tracking-tight uppercase">3.4 Hardware Requirements</h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 gap-4">
+                        <div className="p-5 bg-card border border-border rounded-2xl hover:border-primary/30 transition-colors group">
+                            <h4 className="text-primary font-bold text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                                <window.Icon name="Smartphone" size={14} /> Mobile App & Field Deployment
+                            </h4>
+                            <ul className="space-y-2">
+                                {["Android OS v10 or higher", "3GB+ RAM | 32GB+ Internal Storage", "Stable Offline Capture Performance"].map((item, i) => (
+                                    <li key={i} className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                                        <div className="w-1 h-1 rounded-full bg-primary/40" /> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        
+                        <div className="p-5 bg-card border border-border rounded-2xl hover:border-primary/30 transition-colors">
+                            <h4 className="text-primary font-bold text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                                <window.Icon name="Monitor" size={14} /> Admin Web Portal
+                            </h4>
+                            <ul className="space-y-2">
+                                {["AMD Ryzen 5 / Intel Core i5+", "8GB+ RAM | 256GB SSD Storage", "Stable Internet Connection"].map((item, i) => (
+                                    <li key={i} className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                                        <div className="w-1 h-1 rounded-full bg-primary/40" /> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Software Section */}
+                <div data-aos="fade-left" className="space-y-6">
+                    <div className="flex items-center gap-3 mb-2">
+                        <div className="bg-primary/10 p-2 rounded-lg text-primary">
+                            <window.Icon name="Code2" size={24} />
+                        </div>
+                        <h3 className="text-xl font-black text-foreground tracking-tight uppercase">3.5 Software Requirements</h3>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        {[
+                            { name: "React Native", icon: "Layers", desc: "Android Mobile App" },
+                            { name: "Next.js", icon: "Globe", desc: "Admin Web Portal" },
+                            { name: "Supabase", icon: "Database", desc: "Backend & Real-time" },
+                            { name: "Clerk", icon: "ShieldCheck", desc: "Authentication" },
+                            { name: "Tailwind / ShadCN", icon: "Palette", desc: "UI Components" },
+                            { name: "Vercel / Render", icon: "Cloud", desc: "Hosting Services" }
+                        ].map((s, i) => (
+                            <div key={i} className="p-4 bg-muted/20 border border-border/50 rounded-xl flex flex-col gap-2 group hover:bg-muted/40 transition-colors">
+                                <window.Icon name={s.icon} size={20} className="text-primary group-hover:scale-110 transition-transform" />
+                                <div>
+                                    <h4 className="text-sm font-black text-foreground leading-tight">{s.name}</h4>
+                                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-tighter">{s.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <div className="p-4 bg-primary/5 border border-primary/10 rounded-xl">
+                        <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                            Selected for <span className="text-primary font-bold">Offline-First Architecture</span>, Real-time Sync, and Zero-Cost Deployment in LGU contexts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ),
+        notes: "Our hardware requirements ensure stability across both field and office environments. The software stack was strategically chosen for its real-time capabilities and cost-effectiveness for government use."
     },
     {
         id: "conclusion",
