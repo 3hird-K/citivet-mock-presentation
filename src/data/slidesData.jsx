@@ -68,7 +68,7 @@ const ZoomableImage = ({ src, alt, className }) => {
 window.slidesData = [
     {
         id: "title",
-        duration: 10,
+        duration: 15,
         title: "SyncVet Overview",
         content: (
             <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-12 relative">
@@ -106,7 +106,7 @@ window.slidesData = [
     },
     {
         id: "background",
-        duration: 20,
+        duration: 30,
         title: "Background of the Study",
         content: (
             <div className="max-w-6xl mx-auto w-full">
@@ -158,7 +158,7 @@ window.slidesData = [
     },
     {
         id: "problem",
-        duration: 120,
+        duration: 90,
         title: "Statement of the Problem",
         content: (
             <div className="flex flex-col gap-6 pt-4 max-w-6xl mx-auto w-full">
@@ -195,7 +195,7 @@ window.slidesData = [
     },
     {
         id: "objectives",
-        duration: 120,
+        duration: 90,
         title: "Objectives of the Study",
         content: (
             <div className="flex flex-col gap-8 pt-4 max-w-6xl mx-auto w-full">
@@ -228,7 +228,7 @@ window.slidesData = [
     },
     {
         id: "significance",
-        duration: 30,
+        duration: 45,
         title: "Significance of the Study",
         content: (
             <div className="max-w-6xl mx-auto w-full flex flex-col gap-8">
@@ -280,7 +280,7 @@ window.slidesData = [
     },
     {
         id: "scope",
-        duration: 90,
+        duration: 60,
         title: "Scope & Limitations",
         content: (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 items-stretch max-w-6xl mx-auto w-full">
@@ -409,7 +409,7 @@ window.slidesData = [
     },
     {
         id: "methodology",
-        duration: 90,
+        duration: 120,
         title: "Software Development Methodology",
         content: (
             <div className="flex flex-col gap-8 pt-4 max-w-6xl mx-auto w-full">
@@ -527,7 +527,7 @@ window.slidesData = [
     },
     {
         id: "requirements",
-        duration: 90,
+        duration: 60,
         title: "System Requirements",
         content: (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 max-w-6xl mx-auto w-full">
@@ -609,7 +609,7 @@ window.slidesData = [
     },
     {
         id: "conclusion",
-        duration: 30,
+        duration: 45,
         title: "Conclusion",
         content: (
             <div className="flex flex-col gap-8 pt-4 max-w-5xl mx-auto w-full">
